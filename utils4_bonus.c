@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilis4_bonus.c                                    :+:      :+:    :+:   */
+/*   utils4_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oaboulgh <oaboulgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:34:56 by oaboulgh          #+#    #+#             */
-/*   Updated: 2023/02/22 17:51:18 by oaboulgh         ###   ########.fr       */
+/*   Updated: 2023/02/23 07:25:41 by oaboulgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_num(int *num, int j)
 	{
 		if (num[j] == num[i])
 		{
-			write (2, "Error", 5);
+			write (2, "Error\n", 6);
 			exit(1);
 		}
 		j--;
@@ -43,7 +43,7 @@ void	check_error1(char **av)
 			j++;
 		if (av[i][j] == '\0')
 		{
-			write (2, "Error", 5);
+			write (2, "Error\n", 6);
 			exit (1);
 		}
 		i++;
@@ -52,7 +52,7 @@ void	check_error1(char **av)
 
 void	error_found(void)
 {
-	write (2, "Error", 5);
+	write (2, "Error\n", 6);
 	exit (1);
 }
 

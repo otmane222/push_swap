@@ -6,7 +6,7 @@
 /*   By: oaboulgh <oaboulgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:50:38 by oaboulgh          #+#    #+#             */
-/*   Updated: 2023/02/22 22:02:14 by oaboulgh         ###   ########.fr       */
+/*   Updated: 2023/02/24 01:31:48 by oaboulgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,12 @@ void	put_p2(t_list **stack_a, t_data *data, int tmp);
 int		first_time(t_list **stack_a);
 int		small_calcul(t_list **stack_a, t_data *data);
 void	set_up_stack_a(t_list **stack_a, t_list **stack_b);
-void	sort_3(t_list **stack_a);
+void	sort_3(t_list **stack_a, t_data *data);
 void	sort_2(t_list **stack_a);
 int		better_move(t_list **stack_a, t_list **stack_b, t_data *data);
 void	calcul(t_data *data);
 void	better_element(t_list **stack_b, t_list **stack_a, t_data *data);
 void	do_it(t_list **stack_a, t_list **stack_b, t_data *data);
-
 
 void	read_her_doc(t_list **stack_a, t_list **stack_b, t_data *data);
 void	make_instructions(t_list **stack_a, t_list **stack_b, int i);
@@ -121,5 +120,6 @@ int		check_the_instruction(char *str);
 size_t	ft_strlen(const char *s);
 char	*get_next_line(int fd);
 int		ft_strncmp(char *s1, char *s2, size_t n);
+void	sort_3_continue(t_list **stack_a, t_data *data);
 
 #endif

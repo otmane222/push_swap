@@ -6,7 +6,7 @@
 /*   By: oaboulgh <oaboulgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:23:09 by oaboulgh          #+#    #+#             */
-/*   Updated: 2023/02/23 01:19:33 by oaboulgh         ###   ########.fr       */
+/*   Updated: 2023/02/23 07:26:51 by oaboulgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ void	read_her_doc(t_list **stack_a, t_list **stack_b, t_data *data)
 	}
 	free(str);
 	str = NULL;
-	printf("%d", i);
 }
 
 int	main(int ac, char **av)

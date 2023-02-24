@@ -6,7 +6,7 @@
 /*   By: oaboulgh <oaboulgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:39:40 by oaboulgh          #+#    #+#             */
-/*   Updated: 2023/02/21 21:04:59 by oaboulgh         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:59:30 by oaboulgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ int	main(int ac, char **av)
 	initial_vars(stack_a, stack_b, data);
 	data->num = read_and_check(av, data);
 	list_of_nodes(stack_a, data);
+	if (sorted(stack_a))
+		return (0);
 	push_chunks(stack_a, stack_b, data);
-	data->better = 0;
-	do_it(stack_a, stack_b, data);
 	while ((*stack_b))
 		get_data_back_sorted(stack_b, stack_a, data);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: oaboulgh <oaboulgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:10:13 by oaboulgh          #+#    #+#             */
-/*   Updated: 2023/02/22 19:01:03 by oaboulgh         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:59:46 by oaboulgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_data
 	char	*arr;
 	int		first;
 	int		i;
+	int		j;
+	int		k;
 	int		size;
 	int		pass;
 	int		chunk1;
@@ -97,7 +99,7 @@ void	put_positions(t_list **stack_a, t_data *data);
 int		chunks_per_size(t_data *data);
 void	list_of_nodes(t_list **head, t_data *data);
 
-int		check_position(t_list **stack_a, int chunk);
+int		check_p(t_list **stack_a, int chunk);
 void	check_stack_a(t_list **stack_a);
 
 void	put_positions(t_list **stack_a, t_data *data);
@@ -105,11 +107,14 @@ void	put_p2(t_list **stack_a, t_data *data, int tmp);
 int		first_time(t_list **stack_a);
 int		small_calcul(t_list **stack_a, t_data *data);
 void	set_up_stack_a(t_list **stack_a, t_list **stack_b);
-void	sort_3(t_list **stack_a);
+void	sort_3(t_list **stack_a, t_data *data);
 void	sort_2(t_list **stack_a);
 int		better_move(t_list **stack_a, t_list **stack_b, t_data *data);
 void	calcul(t_data *data);
 void	better_element(t_list **stack_b, t_list **stack_a, t_data *data);
 void	do_it(t_list **stack_a, t_list **stack_b, t_data *data);
+void	sort_5(t_list **stack_a, t_list **stack_b, t_data *data);
+void	push_rest(t_list **stack_a, t_list **stack_b);
+int		sorted(t_list **stack_a);
 
 #endif

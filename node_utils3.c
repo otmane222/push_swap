@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_utilis3.c                                     :+:      :+:    :+:   */
+/*   node_utils3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oaboulgh <oaboulgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 23:08:55 by oaboulgh          #+#    #+#             */
-/*   Updated: 2023/02/21 21:02:26 by oaboulgh         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:21:27 by oaboulgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ void	initial_vars(t_list **stack_a, t_list **stack_b, t_data *data)
 	data->move = 0;
 	data->size = 0;
 	data->pass = 1;
+	data->j = 0;
+	data->k = 0;
 	data->better = 0;
 	data->first = 0;
 }
 
-int	check_position(t_list **stack_a, int chunk)
+int	check_p(t_list **stack_a, int chunk)
 {
 	int	i;
 
@@ -73,10 +75,10 @@ int	chunks_per_size(t_data *data)
 
 	i = 5;
 	if (data->size >= 400)
-		i = 16;
+		i = 17;
 	else if (data->size > 60)
-		i = 8;
+		i = 10;
 	else if (data->size <= 60)
-		i = 1;
+		i = 2;
 	return (i);
 }

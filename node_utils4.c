@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_utilis4.c                                     :+:      :+:    :+:   */
+/*   node_utils4.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oaboulgh <oaboulgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:00:41 by oaboulgh          #+#    #+#             */
-/*   Updated: 2023/02/21 21:03:12 by oaboulgh         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:12:30 by oaboulgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	calcul(t_data *data)
 	else
 		m = data->flag - data->position;
 	if (k >= m)
-		data->position = data->position;
+		data->move = 0;
 	else if (m > k)
 	{
 		data->position = data->better;
@@ -86,41 +86,56 @@ void	set_up_stack_a(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-void	do_it(t_list **stack_a, t_list **stack_b, t_data *data)
+void	push_rest(t_list **stack_a, t_list **stack_b)
 {
-	int		tmp;
-	int		a;
+	int	i;
 
-	a = 0;
-	if (!(*stack_b))
-		return ;
-	tmp = (*stack_b)->position;
-	data->move = 0;
-	while ((*stack_b)->next)
-	{
-		if ((*stack_b)->next->position > tmp)
-			tmp = (*stack_b)->next->position;
-		(*stack_b) = (*stack_b)->next;
-	}
-	get_head(stack_b);
-	while ((*stack_b)->next)
-	{
-		if ((*stack_b)->position == tmp)
-			break ;
-		(*stack_b) = (*stack_b)->next;
-		a++;
-	}
-	data->position = a;
-	start_the_moving_x(stack_b, stack_a, data);
-}
-
-void	sort_2(t_list **stack_a)
-{
+	i = 0;
 	get_head(stack_a);
-	if (!(*stack_a) || !(*stack_a)->next)
-		return ;
-	if ((*stack_a)->position > (*stack_a)->next->position)
-		sa(stack_a);
-	else
-		return ;
+	while ((*stack_a)->next)
+	{
+		i++;
+		(*stack_a) = (*stack_a)->next;
+	}
+	while (i--)
+		pb(stack_a, stack_b);
 }
+
+// void	do_it(t_list **stack_a, t_list **stack_b, t_data *data)
+// {
+// 	int		tmp;
+// 	int		a;
+
+// 	a = 0;
+// 	if (!(*stack_b))
+// 		return ;
+// 	tmp = (*stack_b)->position;
+// 	data->move = 0;
+// 	while ((*stack_b)->next)
+// 	{
+// 		if ((*stack_b)->next->position > tmp)
+// 			tmp = (*stack_b)->next->position;
+// 		(*stack_b) = (*stack_b)->next;
+// 	}
+// 	get_head(stack_b);
+// 	while ((*stack_b)->next)
+// 	{
+// 		if ((*stack_b)->position == tmp)
+// 			break ;
+// 		(*stack_b) = (*stack_b)->next;
+// 		a++;
+// 	}
+// 	data->position = a;
+// 	start_the_moving_x(stack_b, stack_a, data);
+// }
+
+// void	sort_2(t_list **stack_a)
+// {
+// 	get_head(stack_a);
+// 	if (!(*stack_a) || !(*stack_a)->next)
+// 		sa(stack_a);
+// 	if ((*stack_a)->position > (*stack_a)->next->position)
+// 		return ;
+// 	else
+// 		return ;
+// }

@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_utilis2.c                                     :+:      :+:    :+:   */
+/*   node_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oaboulgh <oaboulgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 23:01:37 by oaboulgh          #+#    #+#             */
-/*   Updated: 2023/02/21 21:02:05 by oaboulgh         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:31:20 by oaboulgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	get_best_move(t_list **stack_a, t_list **stack_b, t_data *data)
+void	check_best_move(t_list **stack_a, t_list **stack_b, t_data *data)
 {
-	int		i;
-
-	i = 0;
-	data->flag = 0;
-	data->better = 0;
-	i = small_calcul(stack_a, data);
-	while (i && (data->flag == 4 || data->flag == 5))
+	while (data->position)
 	{
 		ra(stack_a, 1);
-		i--;
+		data->position--;
 	}
 	pb(stack_a, stack_b);
-	if (data->flag == 5)
+	if (data->flag == 4)
 	{
-		get_head(stack_a);
 		if ((*stack_a)->position > data->chunk2)
 			rr(stack_a, stack_b);
 		else
@@ -36,42 +29,55 @@ void	get_best_move(t_list **stack_a, t_list **stack_b, t_data *data)
 	}
 }
 
-void	push_chunks(t_list **stack_a, t_list **stack_b, t_data *data)
+void	get_best_move(t_list **stack_a, t_list **stack_b, t_data *data)
 {
 	int		i;
 	int		j;
-	int		tmp;
-	int		k;
 
 	i = 0;
-	k = 0;
-	while (data->chunk1 <= data->size)
-	{
-		j = data->chunk1;
-		tmp = data->chunk2;
-		while (1)
-		{
-			get_head(stack_a);
-			get_best_move(stack_a, stack_b, data);
-			if (check_position(stack_a, data->chunk1))
-				data->chunk1 += data->var_split_chunk * 2;
-			if (check_position(stack_a, data->chunk2))
-				data->chunk2 += data->var_split_chunk * 2;
-			if (check_position(stack_a, j) && check_position(stack_a, tmp))
-				break ;
-		}
-	}
+	j = 0;
+	data->flag = 0;
+	data->better = 0;
+	data->pass = 0;
+	data->k = 0;
+	data->move = 0;
 	get_head(stack_a);
 	while ((*stack_a)->next)
 	{
-		i++;
 		(*stack_a) = (*stack_a)->next;
+		data->pass++;
 	}
-	while (i >= 0)
+	data->k = data->pass / 2;
+	data->position = small_calcul(stack_a, data);
+	check_best_move(stack_a, stack_b, data);
+}
+
+void	push_chunks(t_list **stack_a, t_list **stack_b, t_data *data)
+{
+	if (data->size <= 5 && data->size != 4)
 	{
-		pb(stack_a, stack_b);
-		i--;
+		if (data->size == 3)
+		{
+			sort_3(stack_a, data);
+		}
+		else
+			sort_5(stack_a, stack_b, data);
+		return ;
 	}
+	while (data->chunk1 <= data->size)
+	{
+		data->j = data->chunk1;
+		data->i = data->chunk2;
+		while (1)
+		{
+			get_best_move(stack_a, stack_b, data);
+			if (check_p(stack_a, data->j) && check_p(stack_a, data->i))
+				break ;
+		}
+		data->chunk1 += data->var_split_chunk * 2;
+		data->chunk2 += data->var_split_chunk * 2;
+	}
+	push_rest(stack_a, stack_b);
 }
 
 void	put_positions(t_list **stack_a, t_data *data)
